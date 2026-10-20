@@ -24,10 +24,14 @@ export interface Definition {
   reply?: string
   reqheaders?: Record<string, RequestHeaderMatcher>
   badheaders?: string[]
-  rawHeaders?: ReplyHeaders
+  /**
+   * Response headers as recorded (object form). Values are strings; multi-value
+   * headers (e.g. set-cookie) may be string[] when definitions are loaded from
+   * fixtures or hand-written. This is what define() uses.
+   */
+  rawHeaders?: Record<string, string | string[]>
   response?: ReplyBody
   responseIsBinary?: boolean
-  headers?: ReplyHeaders
   options?: Options
 }
 
